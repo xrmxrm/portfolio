@@ -1,7 +1,9 @@
 <h1>Richard's Blog</h1>
 
+<h2>Richard has posted {{ blogs.count }} time{{ blogs.count|pluralize }}.</h2>
+
 {% for blog in blogs%}
-  <h2>{{ blog.title }}</h2>
-  <h5>{{ blog.date }}</h5>
-  <p>{{ blog.description }}</p>
+  <a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+  <h5>{{ blog.date|date:'M d Y'|upper }}</h5>
+  <p>{{ blog.description|striptags|truncatechars:20 }}</p>
 {% endfor %}
