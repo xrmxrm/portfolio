@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vc@)hcl&dq!navg1#(+nsl5pt6i-qp*npkvm4%$jf8t5is9jh-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['richard.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['richard.pythonanywhere.com']
 
 
 # Application definition
@@ -130,3 +130,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+try:
+    from .local_settings import *
+except ImportError:
+    print('No local file -- on production.')
